@@ -13,6 +13,7 @@
 		FADDCA1A2262ECF000F5DF84 /* bai01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADDCA192262ECF000F5DF84 /* bai01Tests.swift */; };
 		FADDCA252262ECF000F5DF84 /* bai01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADDCA242262ECF000F5DF84 /* bai01UITests.swift */; };
 		FADDCA332262F7A100F5DF84 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADDCA322262F7A100F5DF84 /* LoginViewController.swift */; };
+		FAFACEB822637A0D00F6A4F2 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACEB722637A0D00F6A4F2 /* UIColor+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		FADDCA242262ECF000F5DF84 /* bai01UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bai01UITests.swift; sourceTree = "<group>"; };
 		FADDCA262262ECF000F5DF84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FADDCA322262F7A100F5DF84 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FAFACEB722637A0D00F6A4F2 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				FADDCA042262ECEE00F5DF84 /* AppDelegate.swift */,
 				FADDCA322262F7A100F5DF84 /* LoginViewController.swift */,
+				FAFACEB722637A0D00F6A4F2 /* UIColor+Extensions.swift */,
 				FADDCA0B2262ECF000F5DF84 /* Assets.xcassets */,
 				FADDCA0D2262ECF000F5DF84 /* LaunchScreen.storyboard */,
 				FADDCA102262ECF000F5DF84 /* Info.plist */,
@@ -253,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FADDCA332262F7A100F5DF84 /* LoginViewController.swift in Sources */,
+				FAFACEB822637A0D00F6A4F2 /* UIColor+Extensions.swift in Sources */,
 				FADDCA052262ECEE00F5DF84 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
