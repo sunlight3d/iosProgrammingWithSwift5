@@ -57,6 +57,7 @@ class LoginViewController: UIViewController {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Enter your username"
+        textField.textColor = UIColor.white
         return textField
     }()
     
@@ -80,6 +81,7 @@ class LoginViewController: UIViewController {
         layoutLogoImageView()
         layoutLblLogo()
         layoutLblTitle()
+        layoutUserName()
     }
 
 }
@@ -102,8 +104,8 @@ extension LoginViewController {
     }
     func layoutLogoImageView() {
         view.addSubview(logoImageView)
-        logoImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        logoImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        logoImageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        logoImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
         logoImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
         logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
     }
@@ -120,10 +122,30 @@ extension LoginViewController {
         
     }
     func layoutUserName() {
-        view.addSubview(userIcon)
-        view.addSubview(txtUserName)
-        let line:UIView = UIView()
-        line.translatesAutoresizingMaskIntoConstraints = false
+        let stackView = UIStackView(arrangedSubviews: [userIcon, txtUserName])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.axis = .horizontal
+        view.addSubview(stackView)
+        stackView.topAnchor.constraint(equalTo: lblTitle.bottomAnchor, constant: 15).isActive = true
+        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
+        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
+        
+        stackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        stackView.alignment = UIStackView.Alignment.leading
+        stackView.distribution = UIStackView.Distribution.fill
+        stackView.spacing = 5
+        userIcon.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        userIcon.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+//        let line:UIView = UIView()
+//        line.translatesAutoresizingMaskIntoConstraints = false
+//        line.heightAnchor.constraint(equalToConstant: 1).isActive = true
+//        line.backgroundColor = UIColor.white
+//        view.addSubview(line)
+//        line.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+//        line.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+//        line.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10).isActive = true
         
     }
 }
