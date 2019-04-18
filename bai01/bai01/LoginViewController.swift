@@ -131,21 +131,21 @@ extension LoginViewController {
         stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
         stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
         
-        stackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        stackView.alignment = UIStackView.Alignment.leading
+        stackView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        stackView.alignment = UIStackView.Alignment.center
         stackView.distribution = UIStackView.Distribution.fill
         stackView.spacing = 5
         userIcon.widthAnchor.constraint(equalToConstant: 30).isActive = true
         userIcon.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-//        let line:UIView = UIView()
-//        line.translatesAutoresizingMaskIntoConstraints = false
-//        line.heightAnchor.constraint(equalToConstant: 1).isActive = true
-//        line.backgroundColor = UIColor.white
-//        view.addSubview(line)
-//        line.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
-//        line.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
-//        line.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10).isActive = true
+        let line:UIView = UIView()
+        line.translatesAutoresizingMaskIntoConstraints = false
+        line.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        line.backgroundColor = UIColor.white
+        view.addSubview(line)
+        line.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        line.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        line.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 5).isActive = true
         
     }
 }
