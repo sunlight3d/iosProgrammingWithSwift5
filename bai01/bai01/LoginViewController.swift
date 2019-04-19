@@ -46,18 +46,23 @@ class LoginViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    private var stackView1:UIStackView?
+    private var stackView2:UIStackView?
     
     private let userIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "user.png")
+        imageView.alpha = 0.5
         return imageView
     }()
     private let txtUserName: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Enter your username"
+        textField.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
         textField.textColor = UIColor.white
+        textField.attributedPlaceholder = NSAttributedString(string: "Enter your username",
+                                                attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         return textField
     }()
     
@@ -65,23 +70,35 @@ class LoginViewController: UIViewController {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "password.png")
+        imageView.alpha = 0.5
         return imageView
     }()
     private let txtPassword: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Enter your password"
+        textField.isSecureTextEntry = true
+        textField.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
+        textField.textColor = UIColor.white
+        textField.attributedPlaceholder = NSAttributedString(string: "Enter your password",
+                                                             attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         return textField
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*
+        UIFont.familyNames.forEach({ familyName in
+            let fontNames = UIFont.fontNames(forFamilyName: familyName)
+            print(fontNames)
+        })
+         */
         layoutBackgroundImage()
         layoutOpacityView()
         layoutLogoImageView()
         layoutLblLogo()
         layoutLblTitle()
         layoutUserName()
+        layoutPassword()
     }
 
 }
@@ -101,6 +118,7 @@ extension LoginViewController {
         opacityView.trailingAnchor.constraint(equalTo: backgroundImage.trailingAnchor).isActive = true
         opacityView.topAnchor.constraint(equalTo: backgroundImage.topAnchor).isActive = true
         opacityView.bottomAnchor.constraint(equalTo: backgroundImage.bottomAnchor).isActive = true
+        
     }
     func layoutLogoImageView() {
         view.addSubview(logoImageView)
@@ -122,30 +140,59 @@ extension LoginViewController {
         
     }
     func layoutUserName() {
-        let stackView = UIStackView(arrangedSubviews: [userIcon, txtUserName])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView1 = UIStackView(arrangedSubviews: [userIcon, txtUserName])
+        stackView1?.translatesAutoresizingMaskIntoConstraints = false
         
-        stackView.axis = .horizontal
-        view.addSubview(stackView)
-        stackView.topAnchor.constraint(equalTo: lblTitle.bottomAnchor, constant: 15).isActive = true
-        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
-        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
+        stackView1?.axis = .horizontal
+        view.addSubview(stackView1!)
+        stackView1?.topAnchor.constraint(equalTo: lblTitle.bottomAnchor, constant: 30).isActive = true
+        stackView1?.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
+        stackView1?.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
         
-        stackView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        stackView.alignment = UIStackView.Alignment.center
-        stackView.distribution = UIStackView.Distribution.fill
-        stackView.spacing = 5
+        stackView1?.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        stackView1?.alignment = UIStackView.Alignment.center
+        stackView1?.distribution = UIStackView.Distribution.fill
+        stackView1?.spacing = 13
         userIcon.widthAnchor.constraint(equalToConstant: 30).isActive = true
         userIcon.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         let line:UIView = UIView()
         line.translatesAutoresizingMaskIntoConstraints = false
-        line.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        line.heightAnchor.constraint(equalToConstant: 0.7).isActive = true
         line.backgroundColor = UIColor.white
+        line.alpha = 0.5
         view.addSubview(line)
-        line.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
-        line.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
-        line.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 5).isActive = true
+        line.leadingAnchor.constraint(equalTo: stackView1!.leadingAnchor).isActive = true
+        line.trailingAnchor.constraint(equalTo: stackView1!.trailingAnchor).isActive = true
+        line.topAnchor.constraint(equalTo: stackView1!.bottomAnchor, constant: 10).isActive = true
+        
+    }
+    func layoutPassword() {
+        stackView2 = UIStackView(arrangedSubviews: [passwordIcon, txtPassword])
+        stackView2?.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView2?.axis = .horizontal
+        view.addSubview(stackView2!)
+        stackView2?.topAnchor.constraint(equalTo: stackView1!.bottomAnchor, constant: 30).isActive = true
+        stackView2?.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
+        stackView2?.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
+        
+        stackView2?.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        stackView2?.alignment = UIStackView.Alignment.center
+        stackView2?.distribution = UIStackView.Distribution.fill
+        stackView2?.spacing = 13
+        userIcon.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        userIcon.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        let line:UIView = UIView()
+        line.translatesAutoresizingMaskIntoConstraints = false
+        line.heightAnchor.constraint(equalToConstant: 0.7).isActive = true
+        line.backgroundColor = UIColor.white
+        line.alpha = 0.5
+        view.addSubview(line)
+        line.leadingAnchor.constraint(equalTo: stackView2!.leadingAnchor).isActive = true
+        line.trailingAnchor.constraint(equalTo: stackView2!.trailingAnchor).isActive = true
+        line.topAnchor.constraint(equalTo: stackView2!.bottomAnchor, constant: 10).isActive = true
         
     }
 }
