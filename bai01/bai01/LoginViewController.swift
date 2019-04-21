@@ -88,8 +88,32 @@ class LoginViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(r: 247, g: 119, b: 40, alpha: 1)
+        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 25.0)
         button.setTitle("SIGN IN", for: .normal)
+        button.contentHorizontalAlignment = .center
+        button.layer.cornerRadius = 5
         return button
+    }()
+    private let btnSignInFacebook: UIButton = {
+        //247,119,40
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor(r: 77, g: 101, b: 160, alpha: 1)
+        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 25.0)
+        button.setTitle("Sign in with Facebook", for: .normal)
+        button.setImage(UIImage(named: "facebook.png"), for: .normal)
+        button.contentHorizontalAlignment = .center
+        button.layer.cornerRadius = 5
+        return button
+    }()
+    
+    private let labelOR:UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "OR"
+        label.textAlignment = .center
+        label.alpha = 0.5
+        return label
     }()
     
     override func viewDidLoad() {
@@ -107,6 +131,9 @@ class LoginViewController: UIViewController {
         layoutLblTitle()
         layoutUserName()
         layoutPassword()
+        layoutBtnSignIn()
+        layoutLabelOR()
+        layoutBtnSignInFacebook()
     }
 
 }
@@ -203,7 +230,25 @@ extension LoginViewController {
         line.topAnchor.constraint(equalTo: stackView2!.bottomAnchor, constant: 10).isActive = true
     }
     func layoutBtnSignIn() {
-        btnSignIn.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        btnSignIn.leadingAnchor.con
+        view.addSubview(btnSignIn)
+        btnSignIn.topAnchor.constraint(equalTo: stackView2!.bottomAnchor, constant: 60).isActive = true
+        btnSignIn.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        btnSignIn.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        btnSignIn.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+    }
+    
+    func layoutLabelOR() {
+        view.addSubview(labelOR)
+        labelOR.topAnchor.constraint(equalTo: btnSignIn.bottomAnchor).isActive = true
+        labelOR.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        labelOR.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        labelOR.heightAnchor.constraint(equalToConstant: 60).isActive = true
+    }
+    func layoutBtnSignInFacebook() {
+        view.addSubview(btnSignInFacebook)
+        btnSignInFacebook.topAnchor.constraint(equalTo: labelOR.bottomAnchor).isActive = true
+        btnSignInFacebook.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        btnSignInFacebook.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        btnSignInFacebook.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
     }
 }
