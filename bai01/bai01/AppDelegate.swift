@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let loginViewController = LoginViewController()
         let navigationController = UINavigationController(rootViewController: loginViewController)
+        navigationController.setNavigationBarHidden(true, animated: false)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

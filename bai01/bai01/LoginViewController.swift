@@ -53,7 +53,7 @@ class LoginViewController: UIViewController {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "user.png")
-        imageView.alpha = 0.5
+        imageView.alpha = 0.4
         return imageView
     }()
     private let txtUserName: UITextField = {
@@ -70,7 +70,7 @@ class LoginViewController: UIViewController {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "password.png")
-        imageView.alpha = 0.5
+        imageView.alpha = 0.4
         return imageView
     }()
     private let txtPassword: UITextField = {
@@ -82,6 +82,14 @@ class LoginViewController: UIViewController {
         textField.attributedPlaceholder = NSAttributedString(string: "Enter your password",
                                                              attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         return textField
+    }()
+    private let btnSignIn: UIButton = {
+        //247,119,40
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor(r: 247, g: 119, b: 40, alpha: 1)
+        button.setTitle("SIGN IN", for: .normal)
+        return button
     }()
     
     override func viewDidLoad() {
@@ -107,10 +115,10 @@ extension LoginViewController {
     
     func layoutBackgroundImage(){
         view.addSubview(backgroundImage)
-        backgroundImage.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        backgroundImage.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        backgroundImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        backgroundImage.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        backgroundImage.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     func layoutOpacityView() {
         view.addSubview(opacityView)
@@ -124,18 +132,18 @@ extension LoginViewController {
         view.addSubview(logoImageView)
         logoImageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
         logoImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        logoImageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
-        logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
+        logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 90).isActive = true
     }
     func layoutLblLogo() {
         view.addSubview(lblLogoName)
-        lblLogoName.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
+        lblLogoName.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         lblLogoName.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 10).isActive = true
         
     }
     func layoutLblTitle() {
         view.addSubview(lblTitle)
-        lblTitle.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
+        lblTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         lblTitle.topAnchor.constraint(equalTo: lblLogoName.bottomAnchor, constant: 10).isActive = true
         
     }
@@ -145,16 +153,16 @@ extension LoginViewController {
         
         stackView1?.axis = .horizontal
         view.addSubview(stackView1!)
-        stackView1?.topAnchor.constraint(equalTo: lblTitle.bottomAnchor, constant: 30).isActive = true
-        stackView1?.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
-        stackView1?.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
+        stackView1?.topAnchor.constraint(equalTo: lblTitle.bottomAnchor, constant: 40).isActive = true
+        stackView1?.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        stackView1?.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         
         stackView1?.heightAnchor.constraint(equalToConstant: 40).isActive = true
         stackView1?.alignment = UIStackView.Alignment.center
         stackView1?.distribution = UIStackView.Distribution.fill
         stackView1?.spacing = 13
-        userIcon.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        userIcon.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        userIcon.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        userIcon.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
         let line:UIView = UIView()
         line.translatesAutoresizingMaskIntoConstraints = false
@@ -173,7 +181,7 @@ extension LoginViewController {
         
         stackView2?.axis = .horizontal
         view.addSubview(stackView2!)
-        stackView2?.topAnchor.constraint(equalTo: stackView1!.bottomAnchor, constant: 30).isActive = true
+        stackView2?.topAnchor.constraint(equalTo: stackView1!.bottomAnchor, constant: 50).isActive = true
         stackView2?.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
         stackView2?.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
         
@@ -181,8 +189,8 @@ extension LoginViewController {
         stackView2?.alignment = UIStackView.Alignment.center
         stackView2?.distribution = UIStackView.Distribution.fill
         stackView2?.spacing = 13
-        userIcon.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        userIcon.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        passwordIcon.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        passwordIcon.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
         let line:UIView = UIView()
         line.translatesAutoresizingMaskIntoConstraints = false
@@ -193,6 +201,9 @@ extension LoginViewController {
         line.leadingAnchor.constraint(equalTo: stackView2!.leadingAnchor).isActive = true
         line.trailingAnchor.constraint(equalTo: stackView2!.trailingAnchor).isActive = true
         line.topAnchor.constraint(equalTo: stackView2!.bottomAnchor, constant: 10).isActive = true
-        
+    }
+    func layoutBtnSignIn() {
+        btnSignIn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        btnSignIn.leadingAnchor.con
     }
 }
