@@ -102,13 +102,11 @@ class LoginViewController: UIViewController {
         button.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 25.0)
         button.setTitle("Sign in with Facebook", for: .normal)
         
+        button.imageView?.contentMode = .scaleAspectFit
         button.setImage(UIImage(named: "facebook.png"), for: .normal)
-//button.imageView?.contentMode = .scaleAspectFit
-        //button.imageView?.frame = CGRect(x: button.imageView?.fram, y: <#T##Double#>, width: <#T##Double#>, height: <#T##Double#>)
         button.imageView?.backgroundColor = UIColor.red
         button.contentHorizontalAlignment = .left
         button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-//        button.titleEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)        
         button.layer.cornerRadius = 5
         return button
     }()
