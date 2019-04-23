@@ -48,6 +48,7 @@ class LoginViewController: UIViewController {
     }()
     private var stackView1:UIStackView?
     private var stackView2:UIStackView?
+    private var stackView3:UIStackView?
     
     private let userIcon: UIImageView = {
         let imageView = UIImageView()
@@ -104,9 +105,9 @@ class LoginViewController: UIViewController {
         
         button.imageView?.contentMode = .scaleAspectFit
         button.setImage(UIImage(named: "facebook.png"), for: .normal)
-        button.imageView?.backgroundColor = UIColor.red
         button.contentHorizontalAlignment = .left
-        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 20)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 10)
         button.layer.cornerRadius = 5
         return button
     }()
@@ -119,6 +120,27 @@ class LoginViewController: UIViewController {
         label.textAlignment = .center
         label.alpha = 0.5
         return label
+    }()
+    private let label1:UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Don't have an account yet?"
+        label.textColor = UIColor.white
+        label.textAlignment = .center
+        label.alpha = 0.5
+        return label
+    }()
+    private let btnSignUp: UIButton = {
+        //247,119,40
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor.clear
+        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 17.0)
+        button.setTitle("Sign Up", for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.setTitleColor(UIColor.white, for: .normal)
+        
+        return button
     }()
     
     override func viewDidLoad() {
@@ -139,6 +161,7 @@ class LoginViewController: UIViewController {
         layoutBtnSignIn()
         layoutLabelOR()
         layoutBtnSignInFacebook()
+        layoutSignUp()
     }
 
 }
@@ -255,5 +278,15 @@ extension LoginViewController {
         btnSignInFacebook.heightAnchor.constraint(equalToConstant: 60).isActive = true
         btnSignInFacebook.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         btnSignInFacebook.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+    }
+    func layoutSignUp() {
+        stackView3 = UIStackView(arrangedSubviews: [label1, btnSignUp])
+        stackView3?.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView2?.axis = .horizontal
+        view.addSubview(stackView3!)
+        stackView3?.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15).isActive = true
+        stackView3?.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        stackView3?.spacing = 10
     }
 }
